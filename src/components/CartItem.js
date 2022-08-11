@@ -19,6 +19,7 @@ const CartItem = ({ id, img, title, price, amount }) => { //destructuring props 
         dispatch(decrease(id))
     }
 
+
     return (
 
         <article className='cart-item'>

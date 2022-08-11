@@ -3,22 +3,22 @@ import CartItem from './CartItem'
 import { useSelector, useDispatch } from 'react-redux'
 import { clearCart } from '../features/cart/cartSlice'
 
+
 const CartContainer = () => {
 
     const { cartItems, totalPrice, amount } = useSelector(
         (state) => state.cart
         //implicit return
     )
-
     const dispatch = useDispatch();
 
 
     if (amount < 1) {
         return (
             <section>
-                <header>
+                <header className='empty-cart'>
                     <h2> Your cart </h2>
-                    <h4 className='empty-cart'>is currently empty</h4>
+                    <h4 >is currently empty</h4>
                 </header>
             </section>
         )
@@ -26,7 +26,7 @@ const CartContainer = () => {
 
     return (
         <section className='cart'>
-            <header>
+            <header className='cart-header'>
                 <h2>Your cart</h2>
             </header>
             <div>
@@ -36,11 +36,10 @@ const CartContainer = () => {
                     //{...item} - passing the rest of the properties
                 })}
             </div>
-            <footer>
-                <hr />
+            <footer className='cart-footer'>
                 <div className="cart-total">
                     <h4>
-                        Total <span>£{totalPrice}</span>
+                        Total: <span>£{totalPrice.toFixed(2)}</span>
                     </h4>
                 </div>
                 <button className='clear-button' onClick={() => dispatch(clearCart())}>Clear Cart</button>
