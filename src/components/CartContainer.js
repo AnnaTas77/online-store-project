@@ -1,7 +1,7 @@
-import React from 'react'
-import CartItem from './CartItem'
-import { useSelector, useDispatch } from 'react-redux'
-import { clearCart } from '../features/cart/cartSlice'
+import React from 'react';
+import CartItem from './CartItem';
+import { useSelector, useDispatch } from 'react-redux';
+import { confirmModal } from '../features/modal/modalSlice';
 
 
 const CartContainer = () => {
@@ -42,7 +42,7 @@ const CartContainer = () => {
                         Total: <span>£{totalPrice.toFixed(2)}</span>
                     </h4>
                 </div>
-                <button className='clear-button' onClick={() => dispatch(clearCart())}>Clear Cart</button>
+                <button className='clear-button' onClick={() => dispatch(confirmModal())}>Clear Cart</button>
             </footer>
         </section>
     );

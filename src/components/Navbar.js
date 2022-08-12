@@ -6,12 +6,10 @@ const Navbar = () => {
     // const {amount} = useSelector((state) => state.cart)
     const amount = useSelector((state) => state.cart.amount)
 
-
-
     return (
         <nav>
             <div className='navbar-main'>
-                <h3>Navbar</h3>
+                <h3>Anna's Online Store</h3>
                 <div className='nav-container'>
                     <CartIcon />
                     <div className='amount-container'>
