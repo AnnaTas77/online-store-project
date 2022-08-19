@@ -1,13 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit";
-import cartItems from "../../cartItems"
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import cartItems from "../../cartItems";
+
+
+const urlItems = 'https://course-api.com/react-useReducer-cart-project';
+// const urlFakeStoreApi = 'https://fakestoreapi.com/products';
 
 const initialState = {
-    cartItems: cartItems,
+    cartItems: [],
     amount: 4,
     totalPrice: 0,
     isLoading: true,
 }
 
+
+export const fetchCartItems = createAsyncThunk(
+    'cart/fetchCartItems',
+    () => {
+        return fetch(urlItems)
+            .then((response) => {
+                console.log('response', response);
+                if (!response.ok) {
+                    throw Error('Something went wrong.')
+                }
+                return response.json();
+            }).then((data) => {
+                return data;
+            }).catch(err => console.log(err))
+    }
+)
 
 const cartSlice = createSlice({
     name: 'cart',
@@ -47,14 +67,30 @@ const cartSlice = createSlice({
                 amount += item.amount;
                 total += item.amount * item.price;
             })
-
             state.amount = amount;
             state.totalPrice = total;
+        },
+        extraReducers: {
+            //Lifecycle actions
+            [fetchCartItems.pending]: (state) => {
+                console.log('pending', state);
+                state.isLoading = true;
+            },
+            [fetchCartItems.fulfilled]: (state, action) => {
+                console.log('fulfilled', action);
+                state.isLoading = false;
+                state.cartItems = action.payload;
+
+            },
+            [fetchCartItems.rejected]: (state) => {
+                console.log('rejected', state);
+                state.isLoading = false;
+            }
         }
     }
 });
 
-console.log('cartSlice.js: ', cartSlice)
+console.log('cartSlice.js: ', cartSlice.extraReducers)
 
 export default cartSlice.reducer;
 export const { clearCart, removeItem, increase, decrease, calculateTotals } = cartSlice.actions;

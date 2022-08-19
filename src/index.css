@@ -70,27 +70,15 @@ p {
   align-items: center;
 }
 
-/* .button {
-  text-transform: uppercase;
-  background: var(--clr-primary);
-  color: var(--clr-white);
-  letter-spacing: var(--spacing);
-  display: inline-block;
-  font-weight: 700;
-  transition: var(--transition);
-  font-size: 0.875rem;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  border-radius: var(--radius);
-  padding: 15px 20px 15px 20px;
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  height: 60%;
+  width: 100%;
 }
-
-.button:hover {
-  color: var(--clr-primary);
-  background: var(--clr-primary-light);
-} */
-
 
 /*
 =============== 
