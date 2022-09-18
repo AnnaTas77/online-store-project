@@ -1,6 +1,7 @@
 import React from 'react';
 import { CartIcon } from '../icons'
 import { useSelector } from 'react-redux';
+import Logo from '../assets/logo_icon.svg'
 
 const Navbar = () => {
     // const {amount} = useSelector((state) => state.cart)
@@ -9,7 +10,11 @@ const Navbar = () => {
     return (
         <nav>
             <div className='navbar-main'>
-                <h3>Anna's Online Store</h3>
+                <div className='navbar-info'>
+                    <img src={Logo} alt="Logo icon" />
+                    <h3>Anna's Online Store</h3>
+                </div>
+
                 <div className='nav-container'>
                     <CartIcon />
                     <div className='amount-container'>
