@@ -5,7 +5,7 @@ An online shopping cart created using React and Redux Toolkit.
 
 # Screenshots
 
-![Screenshot of Anna's Online Store ](./src/assets/Anna Store Best.JPG "Anna's Online Store")
+![Screenshot of Anna's Online Store ](./src/assets/Anna_Store_Best.jpg "Anna's Online Store")
 
 # Features
 
